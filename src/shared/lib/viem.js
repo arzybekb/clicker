@@ -2,11 +2,11 @@ import { createPublicClient, http } from 'viem'
 import { sepolia } from 'viem/chains'
 
 export const publicClient = createPublicClient({
-    chain: sepolia,
-    transport: http()
+	chain: sepolia,
+	transport: http()
 })
 
-export const CONTRACT_ADDRESS = '0xE6d9Ff4CfEe6D0d454bfe2a8e141D5302f78Ec83'
+export const CONTRACT_ADDRESS = '0x35Acbbe36F03B8299b56eA9da17dCfD64aaB212c'
 
 export const CLICKER_ABI = [
 	{
@@ -198,12 +198,68 @@ export const CLICKER_ABI = [
 	},
 	{
 		"inputs": [],
+		"name": "getLeaderboard",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "hasPlayed",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "name",
 		"outputs": [
 			{
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "players",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",

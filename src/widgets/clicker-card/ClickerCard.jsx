@@ -34,20 +34,41 @@ export function ClickerCard({ totalOnChain, tokenBalance, onChainLoading, onChai
 
     return (
         <div className="space-y-8">
-            <div
-                className="relative group cursor-pointer"
-                onClick={handleClick}
-            >
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                <button className="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-secondary flex items-center justify-center transform active:scale-95 transition-all shadow-2xl">
-                    <MousePointer2 size={64} className="text-primary group-hover:rotate-12 transition-transform" />
-                    <div className="absolute inset-x-0 bottom-4 text-center text-xs font-bold text-muted-foreground uppercase tracking-widest">Tap to Earn</div>
+            {/* Neon Arc Reactor Button */}
+            <div className="relative flex justify-center py-10">
+                {/* Outer Rotating Ring */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full border border-blue-500/30 border-dashed animate-spin-slow pointer-events-none"></div>
 
-                    {/* Click animations */}
+                {/* Inner Counter-Rotating Ring */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full border-[2px] border-t-purple-500/50 border-r-transparent border-b-blue-500/50 border-l-transparent animate-reverse-spin pointer-events-none"></div>
+
+                {/* Glow Halo */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/20 blur-[50px] rounded-full pointer-events-none"></div>
+
+                {/* Main Button */}
+                <button
+                    className="relative w-64 h-64 rounded-full bg-slate-900/80 backdrop-blur-md border-4 border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.3)] animate-pulse-glow hover:scale-105 active:scale-95 transition-all duration-300 group"
+                    onClick={handleClick}
+                >
+                    {/* Inner Tech Details */}
+                    <div className="absolute inset-2 rounded-full border border-white/5"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-6 rounded-full opacity-20 group-hover:opacity-40 transition-opacity blur-xl absolute inset-0"></div>
+                        <MousePointer2 size={80} className="text-blue-400 drop-shadow-[0_0_15px_rgba(59,130,246,1)] relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+                    </div>
+
+                    {/* Text Label */}
+                    <div className="absolute inset-x-0 bottom-10 text-center">
+                        <div className="text-[10px] items-center justify-center flex gap-1 font-mono text-blue-300/60 uppercase tracking-[0.2em] mb-1">
+                            <Zap size={10} /> Tap to earn
+                        </div>
+                    </div>
+
+                    {/* Click Particles */}
                     {clickAnimations.map(anim => (
                         <div
                             key={anim.id}
-                            className="click-number"
+                            className="absolute text-2xl font-black text-white italic drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] pointer-events-none animate-float-text"
                             style={{
                                 left: anim.x,
                                 top: anim.y,
@@ -84,7 +105,7 @@ export function ClickerCard({ totalOnChain, tokenBalance, onChainLoading, onChai
                         <div className="text-3xl font-black text-purple-100">{formattedTokens}</div>
                     </div>
                     <div className="text-right">
-                        <span className="text-xs text-muted-foreground">1 Click = 10 CLK</span>
+                        <span className="text-xs text-muted-foreground">1 Click = 1 CLK</span>
                     </div>
                 </div>
             </Card>
@@ -104,7 +125,7 @@ export function ClickerCard({ totalOnChain, tokenBalance, onChainLoading, onChai
                 ) : (
                     <>
                         <Zap className="mr-2 h-5 w-5" />
-                        <span>Mint {localClicks > 0 ? `${localClicks * 10} CLK` : 'Tokens'}</span>
+                        <span>Mint {localClicks > 0 ? `${localClicks} CLK` : 'Tokens'}</span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                     </>
                 )}
